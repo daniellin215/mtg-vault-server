@@ -5,6 +5,7 @@ services:
       context: .
       target: development
     volumes:
+    # https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder/37898591#37898591
       - .:/app
       - /app/node_modules
     ports:

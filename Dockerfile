@@ -8,10 +8,10 @@ WORKDIR /app
 # Copying this separately prevents re-running npm install on every code change.
 COPY package.json package-lock.json ./
 RUN npm install
-# Copy local code to the container image.
-COPY . .
+# # Copy local code to the container image.
+# COPY . .
 # Run the web service on container startup.
-CMD ["npx", "ts-node", "index.ts"]
+CMD ["npx", "nodemon", "index.js"]
 
 # Stage 2: Production
 FROM node:alpine as production

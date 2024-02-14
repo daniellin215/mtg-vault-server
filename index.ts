@@ -3,7 +3,7 @@ import fastify from 'fastify'
 const server = fastify()
 
 server.get('/ping', async (request, reply) => {
-  return 'pong\n'
+  return 'ponged s\n'
 })
 
 server.listen({ port: 8080, host: '0.0.0.0' }, (err, address) => {
@@ -11,5 +11,5 @@ server.listen({ port: 8080, host: '0.0.0.0' }, (err, address) => {
     console.error(err)
     process.exit(1)
   }
-  console.log(`Server listening at ${address}, NODE_ENV: ${process.env.NODE_ENV}`)
+  console.log(`Server is listening at ${address}, NODE_ENV: ${process.env.NODE_ENV}`)
 })
