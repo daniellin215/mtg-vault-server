@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   server:
     build:
@@ -12,3 +12,25 @@ services:
       - "8080:8080"
     environment:
       - NODE_ENV=development
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  postgres:
+  pgadmin-data:
