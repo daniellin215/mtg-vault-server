@@ -1,22 +1,21 @@
-import fastify from "fastify";
 import { initializeApp, App, applicationDefault } from "firebase-admin/app";
-
-const server = fastify();
+import { build } from "./app";
 
 const firebaseApp: App = initializeApp({
   credential: applicationDefault(),
 });
 
-server.get("/ping", async (request, reply) => {
-  return "ponged\n";
-});
+const opts = {
+  logger: true,
+};
 
-server.listen({ port: 8080, host: "0.0.0.0" }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
+const server = await build(opts);
+try {
+  const address = await server.listen({ port: 8080, host: "0.0.0.0" });
   console.log(
     `Server is listening at ${address}, NODE_ENV: ${process.env.NODE_ENV}`
   );
-});
+} catch (err) {
+  server.log.error(err);
+  process.exit(1);
+}
