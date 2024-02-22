@@ -11,7 +11,7 @@ RUN npm install
 # # Copy local code to the container image.
 # COPY . .
 # Run the web service on container startup.
-CMD ["npx", "nodemon", "index.js"]
+CMD ["npm", "run", "dev"]
 
 # Stage 2: Production
 FROM node:alpine as production

@@ -113,6 +113,9 @@ dist
 # FuseBox cache
 .fusebox/
 
+# Firebase private key directory for local dev
+.firebase
+
 # DynamoDB Local files
 .dynamodb/
 
