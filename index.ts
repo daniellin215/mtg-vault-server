@@ -1,5 +1,8 @@
 import { initializeApp, App, applicationDefault } from "firebase-admin/app";
 import { build } from "./app";
+import { configDotenv } from "dotenv";
+
+configDotenv();
 
 const firebaseApp: App = initializeApp({
   credential: applicationDefault(),
