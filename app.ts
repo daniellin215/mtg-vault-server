@@ -7,5 +7,11 @@ export async function build(opts = {}) {
     return "ponged\n";
   });
 
+  app.setErrorHandler(async (error, request, reply) => {
+    request.log.error(error);
+    reply.status(error.statusCode || 500);
+    return { error: error.message };
+  });
+
   return app;
 }
